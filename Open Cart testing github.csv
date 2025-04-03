@@ -1,0 +1,26 @@
+Test Case ID,Test Scenario,Tasks,Expected Result,Actual Result,Status
+Register_001,Submit Form Without Accepting Privacy Terms,1.Open OpenCart website,The system should display an error message preventing submission until the toggle is enabled.,Warning: You must agree to the privacy policy,Pass
+,,2.Click on MyAccount>Register,,,
+,,"3.Enter Name, valid email and password",,,
+,,4.Do not toggle the button - I have read and agree to Privacy Policy,,,
+,,5. Click on Continue,,,
+Register_002,Accept Privacy Terms,1.Open OpenCart website,"The toggle should switch to ""ON"" (enabled), and the form should submit successfully.",Account created Successfully,Pass
+,,2.Click on MyAccount>Register,,,
+,,"3.Enter Name, valid email and password",,,
+,,4.Click (toggle) the button to enable agreement,,,
+,,5. Click on Continue,,,
+Login_001,Valid Login Credentials,1. Open OpenCart website  ,User should log in successfully,HomePage opens,Pass
+,,2. Click on 'My Account' > 'Login'  ,,,
+,,3. Enter valid email & password  ,,,
+,,4. Click Login,,,
+Login_002,Invalid Login Credentials,1. Open website ,Appropriate error message indicating wrong credentials entered,Warning: No match for E-Mail Address and/or Password.,Pass
+,,2. Click on 'My Account' > 'Login'  ,,,
+,,3. Enter invalid email and wrong password ,,,
+,,4. Click Login,,,
+SQL_001,SQL Injection in Login Page,1. Open OpenCart Login Page,System should detect SQL injection attempt and prevent login with an error message,Error message displayed: No match for E-Mail Address and/or Password and login prevented,Pass
+,,2. Enter ' OR '1'='1 in the Email field,,,
+,,3. Enter any random password,,,
+,,4. Click on Login,,,
+API_002,Login API with invalid credentials,1. POST request to /index.php?route=api/login,Response should be 401 Unauthorized,403 forbidden result received,Pass
+,,2. Send wrong username or key,,,
+PERF_001,Load test for Login API,1. Simulate 100 users logging in at the same time,Response time < 2 sec for 95% requests,Response time 1.8 sec for 95% users,Pass
